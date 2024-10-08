@@ -1,36 +1,97 @@
-<h1>Listing Products</h1>
+<div class="user text-center">
+  <div class="col-lg-12 mx-auto">
+    <h1><b> CRUD System </b></h1>
+    <p> Add, Edit and Delete data of the Products </p>
+  </div>
+</div>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Quantity</th>
-    <th>Price</th>
-    <th>Available</th>
-    <th>Released at</th>
-    <th>Discount</th>
-    <th>Image</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
 
-  <tbody>
-  <% @products.each do |product| %>
-    <tr>
-      <td><%= product.name %></td>
-      <td><%= product.quantity %></td>
-      <td><%= product.price %></td>
-      <td><%= product.available ? 'Yes' : 'No' %></td>
-      <td><%= product.released_at %></td>
-      <td><%= product.discount %></td>
-      <td><%= image_tag product.image if product.image.present? %></td>
-      <td><%= link_to 'Show', product %></td>
-      <td><%= link_to 'Edit', edit_product_path(product) %></td>
-      <td><%= button_to 'Delete', product_path(product), method: :delete %> </td>
-<!--      <td><%#= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<!-- TABLE CONTAINER -->
+<div class="container-fluid" style="background-color: white;">
 
-<%= link_to 'New Product', new_product_path %>
+  <div class="container"><br><br>
+
+    <!-- Add Button -->
+    <%= link_to 'New Product', new_product_path, class: 'btn btn-primary', role: 'button' %> <br><br>
+
+
+    <table>
+
+      <!-- Table Headers -->
+      <thead>
+
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Released at</th>
+        <th>Discount</th>
+        <th>Image</th>
+        <th colspan="3"></th>
+      </tr>
+
+      </thead> <!-- End of Table Headers -->
+
+      <!-- Table Body -->
+      <tbody>
+
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.quantity %></td>
+          <td><%= product.price %></td>
+          <td><%= product.available ? 'Yes' : 'No' %></td>
+          <td><%= product.released_at %></td>
+          <td><%= product.discount %></td>
+          <td><%= image_tag product.image if product.image.present? %></td>
+          <td><%= link_to 'Show', product %></td>
+          <td><%= link_to 'Edit', edit_product_path(product) %></td>
+          <td><%= button_to 'Delete', product_path(product), method: :delete %> </td>
+        </tr>
+      <% end %>
+      </tbody>
+
+
+    </table> <!-- END OF TABLE -->
+
+  </div> <!-- END OF CONTAINER OF TABLE -->
+
+</div> <!-- END OF CONTAINER FLUID OF TABLE -->
+
+
+<!--  <h1>Listing Products</h1>-->
+
+<!--  <table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Quantity</th>-->
+<!--      <th>Price</th>-->
+<!--      <th>Available</th>-->
+<!--      <th>Released at</th>-->
+<!--      <th>Discount</th>-->
+<!--      <th>Image</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+
+<!--    <tbody>-->
+<%# @products.each do |product| %>
+<!--      <tr>-->
+<!--        <td><%#= product.name %></td>-->
+<!--        <td><%#= product.quantity %></td>-->
+<!--        <td><%#= product.price %></td>-->
+<!--        <td><%#= product.available ? 'Yes' : 'No' %></td>-->
+<!--        <td><%#= product.released_at %></td>-->
+<!--        <td><%#= product.discount %></td>-->
+<!--        <td><%#= image_tag product.image if product.image.present? %></td>-->
+<!--        <td><%#= link_to 'Show', product %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_product_path(product) %></td>-->
+<!--        <td><%#= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+<%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
+
+<%#= link_to 'New Product', new_product_path %>
