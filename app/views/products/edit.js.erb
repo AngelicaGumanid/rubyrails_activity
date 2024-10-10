@@ -1,0 +1,2 @@
+$('#editProductModal-<%= @product.id %>').find('.modal-body').html("<%= j(render 'edit_modal', product: @product) %>");
+$('#editProductModal-<%= @product.id %>').modal('show');

@@ -33,7 +33,12 @@ class ProductsController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      format.js
+      end
+  end
 
   def update
     @product = Product.find(params[:id])

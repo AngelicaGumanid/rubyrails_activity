@@ -53,9 +53,9 @@
           <!--          <td><%#= image_tag product.image if product.image.present? %></td>-->
           <td><%= link_to 'Show', product %></td>
           <td>
-            <%= button_to '#', class: 'btn btn-success', data: { bs_toggle: 'modal', bs_target: "#editProductModal-#{product.id}" } do %>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editProductModal-<%= product.id %>">
               <i class='bx bx-edit'></i> Edit
-            <% end %>
+            </button>
             <%= render 'edit_modal', product: product %>
           </td>
           <td>
