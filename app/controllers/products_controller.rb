@@ -2,22 +2,32 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def index # Responsible for displaying everything in the list product, also uses to render the modal form
     @products = Product.all
+    @product = Product.new # For modal
   end
 
-  def new
-    @product = Product.new
-  end
+  # Removed since I called the new in the modal already
+  # def new
+  #   @product = Product.new
+  # end
 
   def create
     @product = Product.new(product_params)
     if @product.save
       flash[:notice] = 'Product was successfully created.'
-      redirect_to products_path
+      respond_to do |format|
+        format.html { redirect_to products_path }
+        format.js
+      end
+      # redirect_to products_path
     else
       flash.now[:alert] = 'Product create failed'
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.js   # This will render create.js.erb with errors
+      end
+      # render :new, status: :unprocessable_entity
     end
   end
 

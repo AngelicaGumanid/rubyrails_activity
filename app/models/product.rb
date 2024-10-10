@@ -3,5 +3,6 @@ class Product < ApplicationRecord
   # validates :price, numericality: { greater_than_or_equal_to: 0 }
   # validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   # validates :discount, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  has_one_attached :image
   # validates :image, format: { with: /\Ahttps?:\/\/.*\.(png|jpg|jpeg)\z/i, message: "must be a valid image URL" }, allow_nil: true
 end
