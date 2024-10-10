@@ -1,60 +1,75 @@
-<div class="modal-body">
-
-  <%= form_with(model: @product, local: false) do |form| %> <!-- Submitting without refreshing the page -->
-    <% if @product.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-        <ul>
-          <% @product.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+<div class="modal fade" id="newProductModal" tabindex="-1" aria-labelledby="newProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newProductModalLabel">New Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    <% end %>
+      <div class="modal-body">
+        <%= form_with(model: @product, local: false) do |form| %> <!-- Submitting without refreshing the page -->
+          <% if @product.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+              <ul>
+                <% @product.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-    <div class="mb-3">
-      <%= form.label :name, class: "form-label" %>
-      <%= form.text_field :name, class: "form-control", id: "name", required: true %>
-    </div>
+          <div class="mb-3">
+            <%= form.label :name, class: "form-label" %>
+            <%= form.text_field :name, class: "form-control", id: "name", required: true %>
+          </div>
 
-    <div class="mb-3">
-      <%= form.label :content, class: "form-label" %>
-      <%= form.text_area :content, class: "form-control", id: "content" %>
-    </div>
+          <div class="mb-3">
+            <%= form.label :content, class: "form-label" %>
+            <%= form.text_area :content, class: "form-control", id: "content" %>
+          </div>
 
-    <div class="mb-3">
-      <%= form.label :quantity, class: "form-label" %>
-      <%= form.number_field :quantity, class: "form-control", id: "quantity" %>
-    </div>
+          <div class="mb-3">
+            <%= form.label :quantity, class: "form-label" %>
+            <%= form.number_field :quantity, class: "form-control", id: "quantity" %>
+          </div>
 
-    <div class="mb-3">
-      <%= form.label :price, class: "form-label" %>
-      <%= form.number_field :price, step: '0.01', class: "form-control", id: "price" %>
-    </div>
+          <div class="mb-3">
+            <%= form.label :price, class: "form-label" %>
+            <%= form.number_field :price, step: '0.01', class: "form-control", id: "price" %>
+          </div>
 
-    <div class="mb-3 form-check">
-      <%= form.check_box :available, class: "form-check-input", id: "available" %>
-      <%= form.label :available, class: "form-check-label" %>
-    </div>
+          <div class="mb-3 form-check">
+            <%= form.check_box :available, class: "form-check-input", id: "available" %>
+            <%= form.label :available, class: "form-check-label" %>
+          </div>
 
-    <div class="mb-3">
-      <%= form.label :released_at, class: "form-label" %>
-      <%= form.datetime_select :released_at, class: "form-control", id: "released_at" %>
-    </div>
+          <div class="mb-3">
+            <%= form.label :released_at, class: "form-label" %>
+            <%= form.datetime_select :released_at, class: "form-control", id: "released_at" %>
+          </div>
 
-    <div class="mb-3">
-      <%= form.label :discount, class: "form-label" %>
-      <%= form.number_field :discount, step: '0.01', class: "form-control", id: "discount" %>
-    </div>
+          <div class="mb-3">
+            <%= form.label :discount, class: "form-label" %>
+            <%= form.number_field :discount, step: '0.01', class: "form-control", id: "discount" %>
+          </div>
 
-    <div class="mb-3">
-      <%= form.label :image, class: "form-label" %>
-      <%= form.file_field :image, class: "form-control", id: "image" %>
-    </div>
+          <div class="mb-3">
+            <%= form.label :image, class: "form-label" %>
+            <%= form.file_field :image, class: "form-control", id: "image" %>
+          </div>
 
-    <div class="mb-3">
-      <%= form.submit class: "btn btn-primary" %>
+          <div class="mb-3">
+            <%= form.submit class: "btn btn-primary" %>
+          </div>
+
+        <% end %>
+      </div>
     </div>
+  </div>
+</div>
+
+
+
 
     <!--    <div>-->
       <%#= form.label :name %>
@@ -99,6 +114,3 @@
 <!--    <div>-->
       <%#= form.submit %>
 <!--    </div>-->
-
-  <% end %>
-</div>

@@ -15,23 +15,9 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newProductModal">
       New Product
     </button>
+    <%= render 'form', product: @product %>
     <%#= link_to 'New Product', '#', class: 'btn btn-primary', data: { toggle: 'modal', target: '#productModal' } %>
     <!--    <%#= link_to 'New Product', new_product_path, class: 'btn btn-primary', role: 'button' %> <br><br>-->
-
-    <!-- Modal -->
-    <div class="modal fade" id="newProductModal" tabindex="-1" aria-labelledby="newProductModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="newProductModalLabel">New Product</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <%= render 'form', product: @product %>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
     <table>
@@ -66,7 +52,11 @@
           <td><%= image_tag product.image if product.image.attached? %></td>
           <!--          <td><%#= image_tag product.image if product.image.present? %></td>-->
           <td><%= link_to 'Show', product %></td>
-          <td><%= link_to 'Edit', edit_product_path(product) %></td>
+          <td>
+            <%= link_to 'Edit', '#', class: 'btn btn-secondary', data: { bs_toggle: 'modal', bs_target: "#editProductModal-#{product.id}" } %>
+            <!-- Modal Form Partial -->
+            <%= render 'edit_modal', product: product %>
+          </td>
           <td><%= button_to 'Delete', product_path(product), method: :delete %> </td>
         </tr>
       <% end %>
@@ -74,6 +64,7 @@
 
 
     </table> <!-- END OF TABLE -->
+
 
   </div> <!-- END OF CONTAINER OF TABLE -->
 

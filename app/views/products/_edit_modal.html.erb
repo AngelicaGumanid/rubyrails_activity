@@ -1,0 +1,49 @@
+<div class="modal fade" id="editProductModal-<%= product.id %>" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: product, local: true, url: product_path(product), method: :patch) do |form| %>
+          <div class="mb-3">
+            <%= form.label :name, class: "form-label" %>
+            <%= form.text_field :name, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :content, class: "form-label" %>
+            <%= form.text_area :content, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :quantity, class: "form-label" %>
+            <%= form.number_field :quantity, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :price, class: "form-label" %>
+            <%= form.number_field :price, step: '0.01', class: "form-control" %>
+          </div>
+          <div class="mb-3 form-check">
+            <%= form.check_box :available, class: "form-check-input" %>
+            <%= form.label :available, class: "form-check-label" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :released_at, class: "form-label" %>
+            <%= form.datetime_select :released_at, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :discount, class: "form-label" %>
+            <%= form.number_field :discount, step: '0.01', class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :image, class: "form-label" %>
+            <%= form.file_field :image, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.submit "Save Changes", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
