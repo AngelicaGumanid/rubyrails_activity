@@ -53,11 +53,16 @@
           <!--          <td><%#= image_tag product.image if product.image.present? %></td>-->
           <td><%= link_to 'Show', product %></td>
           <td>
-            <%= link_to 'Edit', '#', class: 'btn btn-secondary', data: { bs_toggle: 'modal', bs_target: "#editProductModal-#{product.id}" } %>
-            <!-- Modal Form Partial -->
+            <%= button_to '#', class: 'btn btn-success', data: { bs_toggle: 'modal', bs_target: "#editProductModal-#{product.id}" } do %>
+              <i class='bx bx-edit'></i> Edit
+            <% end %>
             <%= render 'edit_modal', product: product %>
           </td>
-          <td><%= button_to 'Delete', product_path(product), method: :delete %> </td>
+          <td>
+            <%= button_to product_path(product), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } do %>
+              <i class='bx bx-trash'></i> Delete
+            <% end %>
+          </td>
         </tr>
       <% end %>
       </tbody>
